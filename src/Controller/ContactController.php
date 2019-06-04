@@ -3,19 +3,18 @@
 namespace App\Controller;
 
 use App\Form\ContactType;
+use App\Service\Mailer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Swift_Mailer;
-use Swift_Message;
 
 class ContactController extends AbstractController
 {
     /**
      * @Route("/contact", name="contact")
      */
-    public function index(Request $request, Swift_Mailer $mailer)
+    public function index(Request $request, Mailer $mailer)
     {
         $form = $this
             ->createForm(ContactType::class)
@@ -24,22 +23,11 @@ class ContactController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $message = (new Swift_Message('Contact My Beers'))
-                ->setFrom('contact@mybeers.com')
-                ->setTo($form->get('email')->getData())
-                ->setBody(
-                    $this->renderView(
-                        'email/contact.html.twig',
-                        [
-                            'firstName' => $form->get('firstName')->getData(),
-                            'lastName' => $form->get('lastName')->getData(),
-                        ]
-                    ),
-                    'text/html'
-                )
-            ;
-
-            $mailer->send($message);
+            $mailer->sendContactEmail(
+                $form->get('email')->getData(),
+                $form->get('firstName')->getData(),
+                $form->get('lastName')->getData()
+            );
             $this->addFlash('success', 'Thanks to contact us!');
             return $this->redirectToRoute('index');
         }
