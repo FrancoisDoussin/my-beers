@@ -20,11 +20,4 @@ class ContactType extends AbstractType
             ->add('message', TextareaType::class)
         ;
     }
-
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults([
-            // Configure your form options here
-        ]);
-    }
 }
