@@ -6,12 +6,26 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ path('beer_list') }}">List Beers</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ path('beer_import') }}">Import Beer</a>
             </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            {% if is_granted('ROLE_USER') %}
+                <li class="nav-item">
+                    <p class="nav-link">Welcome {{ app.user.name }}</p>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_logout') }}">logout</a>
+                </li>
+            {% else %}
+                    <a class="nav-link" href="{{ path('app_login') }}">login</a>
+                <li class="nav-item">
+                </li>
+            {% endif %}
         </ul>
     </div>
 </nav>

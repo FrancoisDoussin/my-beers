@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Form\BeerImportType;
 use App\Repository\BeerRepository;
 use App\Service\ImportBeer;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,6 +30,7 @@ class BeerController extends AbstractController
 
     /**
      * @Route("/import", name="import")
+     * @IsGranted("ROLE_USER")
      */
     public function import(Request $request, ImportBeer $importBeer): Response
     {
