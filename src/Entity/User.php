@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -39,6 +41,16 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Beer")
+     */
+    private $favoriteBeers;
+
+    public function __construct()
+    {
+        $this->favoriteBeers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -126,6 +138,32 @@ class User implements UserInterface
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Beer[]
+     */
+    public function getFavoriteBeers(): Collection
+    {
+        return $this->favoriteBeers;
+    }
+
+    public function addFavoriteBeer(Beer $favoriteBeer): self
+    {
+        if (!$this->favoriteBeers->contains($favoriteBeer)) {
+            $this->favoriteBeers[] = $favoriteBeer;
+        }
+
+        return $this;
+    }
+
+    public function removeFavoriteBeer(Beer $favoriteBeer): self
+    {
+        if ($this->favoriteBeers->contains($favoriteBeer)) {
+            $this->favoriteBeers->removeElement($favoriteBeer);
+        }
 
         return $this;
     }

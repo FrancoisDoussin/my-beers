@@ -7,6 +7,9 @@ $ composer install
 $ cp .env .env.local //add your database informations
 $ bin/console d:d:c
 $ bin/console d:s:u --force
+$ bin/console fos:js-routing:dump --format=json --target=public/js/fos_js_routes.json
+$ yarn install
+$ yarn watch
 ```
 
 ## Fixtures

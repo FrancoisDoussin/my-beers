@@ -8,15 +8,6 @@
             <div class="col-xl-4 col-md-6 col-sm-12">
                 <div class="card-deck ml-1 mr-1">
                     <img src="{{ beer.imageUrl }}" class="card-img-top" alt="...">
-                    {% if app.user %}
-                        <div class="card-img-overlay">
-                            {% if beer in app.user.favoriteBeers %}
-                            <i class="material-icons md-48 pink beer-favorite" id="{{ beer.id }}">favorite</i>
-                            {% else %}
-                            <i class="material-icons md-48 pink beer-favorite" id="{{ beer.id }}">favorite_border</i>
-                            {% endif %}
-                        </div>
-                    {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">{{ beer.name }}</h5>
                         <code class="card-title">{{ beer.slug }}</code>

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>My Beers List</h1>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label for="beers-list">Select Your Beer</label>
+                <select class="form-control" id="beers-list">
+                    {% for beer in beers %}
+                        <option value="{{ beer.id }}">{{ beer.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="col-12" id="beer-detail"></div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('list') }}
+{% endblock %}
