@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>My Beers List</h1>
+    <h1>My Favorite</h1>
 
     <div class="row">
-        {% for beer in beers %}
-            <div class="col-xl-4 col-md-6 col-sm-12">
-                <div class="card-deck ml-1 mr-1">
+        <div class="card-columns col-12">
+            {% for beer in beers %}
+                <div class="card">
                     <img src="{{ beer.imageUrl }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{ beer.name }}</h5>
@@ -15,10 +15,9 @@
                         <p class="card-text">PH : {{ beer.ph }}</p>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-
 {% endblock %}
 
 {% block javascripts %}

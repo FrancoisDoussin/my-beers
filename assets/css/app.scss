@@ -1,0 +1,14 @@
+@import "~bootstrap/scss/bootstrap";
+@import "~material-design-icons/iconfont/material-icons.css";
+
+.material-icons.md-48 { font-size: 48px; }
+.material-icons.pink { color: hotpink; }
+
+.card-columns {
+    @include media-breakpoint-up(sm) {
+        column-count: 4;
+    }
+    @include media-breakpoint-down(sm) {
+        column-count: 1;
+    }
+}
