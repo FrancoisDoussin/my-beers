@@ -15,6 +15,7 @@
             {% endfor %}
         {% endfor %}
         {{ include('block/nav.html.twig') }}
+        {% block before_container %}{% endblock %}
         <div class="container">
             {% block body %}{% endblock %}
         </div>

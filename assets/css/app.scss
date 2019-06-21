@@ -12,3 +12,8 @@
         column-count: 1;
     }
 }
+
+.carousel-item {
+    max-width: 100%;
+    max-height: calc(100vh - #{$nav-link-height} - #{$nav-link-padding-y * 2});
+}

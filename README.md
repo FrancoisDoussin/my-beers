@@ -26,7 +26,7 @@ $ bin/console d:f:l   // say yes
 
 ### Behat
 
-`$ java -Dwebdriver.gecko.driver=chromedriver -jar selenium-server-standalone-3.0.1.jar`
+`$ java -Dwebdriver.gecko.driver=chromedriver -jar selenium-server-standalone-3.141.59.jar`
 
 `$ bin/behat`
 
