@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>My Beers List</h1>
+    <a href="{{ path('list_clear') }}">Clean my list</a>
+
+    <div class="row">
+        <div class="card-columns col-12">
+            {% for beer in beers %}
+                <div class="card">
+                    <img src="{{ beer.imageUrl }}" class="card-img-top" alt="...">
+                    <div class="card-img-overlay">
+                        <a href="{{ path('list_delete', {'id': beer.id}) }}">
+                            <i class="material-icons md-48 red beer-favorite" id="{{ beer.id }}">delete_forever</i>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ beer.name }}</h5>
+                        <code class="card-title">{{ beer.slug }}</code>
+                        <p class="card-text">{{ beer.tagline }}</p>
+                        <p class="card-text">PH : {{ beer.ph }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

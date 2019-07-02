@@ -33,6 +33,16 @@ class BeerController extends AbstractController
     }
 
     /**
+     * @Route("/show/{id}", name="show")
+     */
+    public function show(Beer $beer, BeerRepository $beerRepository): Response
+    {
+        return $this->render('beer/show.html.twig', [
+            'beer' => $beer,
+        ]);
+    }
+
+    /**
      * @Route("/list", name="list-beer")
      */
     public function listBeer(BeerRepository $beerRepository): Response

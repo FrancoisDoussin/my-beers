@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>My Beers List</h1>
+
+    <div class="row">
+        <div class="card-columns col-12">
+            <img src="{{ beer.imageUrl }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ beer.name }}</h5>
+                <code class="card-title">{{ beer.slug }}</code>
+                <p class="card-text">{{ beer.tagline }}</p>
+                <p class="card-text">PH : {{ beer.ph }}</p>
+            </div>
+            <a href="{{ path('list_add', { id : beer.id}) }}">Add to list</a>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('like') }}
+{% endblock %}
