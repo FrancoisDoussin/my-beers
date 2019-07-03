@@ -7,7 +7,7 @@
         <div class="card-columns col-12">
             {% for beer in beers %}
                 <div class="card">
-                    <img src="{{ beer.imageUrl }}" class="card-img-top" alt="...">
+                    <img src="{{ beer.imageUrl }}" class="card-img" alt="...">
                     {% if app.user %}
                         <div class="card-img-overlay">
                             {% if beer in app.user.favoriteBeers %}
@@ -22,6 +22,9 @@
                         <code class="card-title">{{ beer.slug }}</code>
                         <p class="card-text">{{ beer.tagline }}</p>
                         <p class="card-text">PH : {{ beer.ph }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ path('beer_show', {'id': beer.id}) }}" class="btn btn-primary">Detail</a>
                     </div>
                 </div>
             {% endfor %}

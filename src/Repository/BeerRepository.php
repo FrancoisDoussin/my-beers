@@ -18,4 +18,17 @@ class BeerRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Beer::class);
     }
+
+    public function search(?string $search): array
+    {
+        $qb = $this->createQueryBuilder('b');
+
+        if ($search) {
+            $qb
+                ->where('b.name LIKE :search')
+                ->setParameter('search', '%'.$search.'%');
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }

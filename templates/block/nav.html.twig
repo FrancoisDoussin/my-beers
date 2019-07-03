@@ -29,9 +29,9 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             {% if is_granted('ROLE_USER') %}
-                <li class="nav-item">
-                    <p class="nav-link">Welcome {{ app.user.name }}</p>
-                </li>
+                <span class="navbar-text">
+                    Welcome {{ app.user.name }}
+                </span>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_logout') }}">logout</a>
                 </li>
@@ -41,5 +41,9 @@
                 </li>
             {% endif %}
         </ul>
+        <form class="form-inline my-2 my-lg-0" method="get" action="{{ path('beer_search') }}">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
     </div>
 </nav>

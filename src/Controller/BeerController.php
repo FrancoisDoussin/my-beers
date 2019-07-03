@@ -22,6 +22,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class BeerController extends AbstractController
 {
     /**
+     * @Route("/search", name="search")
+     */
+    public function search(Request $request, BeerRepository $beerRepository): Response
+    {
+        $search = $request->query->get('search');
+        $beers = $beerRepository->search($search);
+
+        return $this->render('beer/search.html.twig', [
+            "beers" => $beers,
+        ]);
+    }
+
+    /**
      * @Route("/", name="list")
      */
     public function list(BeerRepository $beerRepository): Response

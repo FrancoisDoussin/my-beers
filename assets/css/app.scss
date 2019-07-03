@@ -5,6 +5,10 @@
 .material-icons.pink { color: hotpink; }
 .material-icons.red { color: red; }
 
+.card-img-overlay{
+    bottom: auto;
+}
+
 .card-columns {
     @include media-breakpoint-up(sm) {
         column-count: 4;
