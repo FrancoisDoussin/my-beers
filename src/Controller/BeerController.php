@@ -17,10 +17,35 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/beer", name="beer_")
+ * @Route("/beers", name="beer_")
  */
 class BeerController extends AbstractController
 {
+    /**
+     * @Route("/random", name="random")
+     */
+    public function random(): Response
+    {
+        return $this->render('beer/random.html.twig');
+    }
+
+    /**
+     * @Route("/randomjson", name="random_json", options={ "expose" = true})
+     */
+    public function randomJson(BeerRepository $beerRepository): JsonResponse
+    {
+        $beers = $beerRepository->findAll();
+        $beer = $beers[rand(0, count($beers)-1)];
+
+        $datas = [
+            'html' => $this->render('beer/detail.html.twig', [
+                'beer' => $beer
+            ])->getContent()
+        ];
+
+        return $this->json($datas);
+    }
+
     /**
      * @Route("/search", name="search")
      */

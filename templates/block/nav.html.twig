@@ -12,6 +12,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('beer_list-beer') }}">List Select</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('beer_random') }}">Random Beer</a>
+            </li>
             {% if is_granted('ROLE_USER') %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('beer_favorites') }}">Favorites</a>
