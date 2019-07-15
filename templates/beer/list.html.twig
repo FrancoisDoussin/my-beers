@@ -21,7 +21,7 @@
                         <h5 class="card-title">{{ beer.name }}</h5>
                         <code class="card-title">{{ beer.slug }}</code>
                         <p class="card-text">{{ beer.tagline }}</p>
-                        <p class="card-text">PH : {{ beer.ph }}</p>
+                        <p class="card-text">Gout {{ acidity(beer.ph) }}</p>
                     </div>
                     <div class="card-footer">
                         <a href="{{ path('beer_show', {'id': beer.id}) }}" class="btn btn-primary">Detail</a>
