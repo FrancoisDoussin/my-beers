@@ -1,0 +1,12 @@
+name: Run Tests
+on: [push]
+
+jobs:
+  php-unit:
+    name: PHPUnit
+    runs-on: ubuntu-latest
+    steps:
+      - name: PHPUnit
+        uses: docker://phpunit/phpunit
+      - name: Run Unit Tests  
+        run: ls -la /home/runner/work/my-beers/my-beers
