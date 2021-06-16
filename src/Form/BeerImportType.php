@@ -17,7 +17,7 @@ class BeerImportType extends AbstractType
                 'required' => true,
                 'constraints' => [
                     new File([
-                        'mimeTypes' => "text/plain"
+                        'mimeTypes' => ["text/plain", "application/json"]
                     ])
                 ]
             ])

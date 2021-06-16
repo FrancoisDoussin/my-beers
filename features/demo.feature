@@ -2,7 +2,7 @@ Feature: Test Homepage and Contact Page
 
   Scenario: Navigate Beetween HomePage and ContactPage
     Given I am on homepage
-    Then I should see "My Beers 🍻"
+    Then I should see "Mes Bières"
     And I wait for 1
     When I follow "Contact Us"
     Then I should be on "/contact"

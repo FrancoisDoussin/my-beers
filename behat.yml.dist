@@ -11,8 +11,10 @@ default:
                 bootstrap: features/bootstrap/bootstrap.php
                 class: App\Kernel
         Behat\MinkExtension:
-            base_url: 'http://mybeers.wildcodeschool.loc'
+            base_url: 'http://localhost:8000'
             browser_name: 'chrome'
             sessions:
                 my_session:
                     selenium2: ~
+            selenium2:
+                capabilities: { "browser": "chrome", "version": "*", "marionette": true, "extra_capabilities": { "chromeOptions": { "w3c": false } } }
